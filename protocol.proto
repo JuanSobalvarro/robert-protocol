@@ -82,3 +82,13 @@ message ClientRequest {
     float speed = 5; // only for SETSPEED
     Zone zone = 6; // only for SETZONE
 }
+
+enum ResponseStatus {
+    SUCCESS = 0;
+    ERROR = 1;
+}
+
+message ServerResponse {
+    ResponseStatus status = 1;
+    string message = 2;
+}
