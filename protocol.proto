@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package robert;
+
+enum CommandType {
+    PING = 0;   
+    PINGR = 1;
+    ZERO = 2;
+    EXIT = 3;
+    MOVEL = 4;
+    MOVEJ = 5;
+    MOVEC = 6;
+    MOVEABSJ = 7;
+    SETSPEED = 8;
+    SETZONE = 9;
+}
+
+message Position {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+}
+
+message Orientation {
+    float q1 = 1;
+    float q2 = 2;
+    float q3 = 3;
+    float q4 = 4;
+}
+
+message ConfData {
+    int32 cf1 = 1;
+    int32 cf4 = 2;
+    int32 cf6 = 3;
+    int32 cfx = 4;
+}
+
+message RobTarget {
+    Position trans = 1;
+    Orientation rot = 2;
+    ConfData robconf = 5;
+}
+
+message RobJoint {
+    float rax_1 = 1;
+    float rax_2 = 2;
+    float rax_3 = 3;
+    float rax_4 = 4;
+    float rax_5 = 5;
+    float rax_6 = 6;
+}
+
+message ExtJoint {
+    float eax_a = 1;
+    float eax_b = 2;
+    float eax_c = 3;
+    float eax_d = 4;
+    float eax_e = 5;
+    float eax_f = 6;
+}
+
+message JointTarget {
+    RobJoint robjoint = 1;
+    ExtJoint extjoint = 2;
+}
+
+enum Zone {
+    FINE  = 0;
+    Z1    = 1;
+    Z5    = 2;
+    Z10   = 3;
+    Z20   = 4;
+    Z30   = 5;
+}
+
+// main wrapper for all info
+message ClientRequest {
+    CommandType command = 1; // always required
+    RobTarget target = 2; // only for MOVEL, MOVEJ
+    RobTarget extra_target = 3; // only for MOVEC
+    JointTarget joint_target = 4; // only for MoveAbsJ
+    float speed = 5; // only for SETSPEED
+    Zone zone = 6; // only for SETZONE
+}
