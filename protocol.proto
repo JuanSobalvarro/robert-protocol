@@ -70,8 +70,9 @@ enum Zone {
     Z1    = 1;
     Z5    = 2;
     Z10   = 3;
-    Z20   = 4;
-    Z30   = 5;
+    Z15   = 4;
+    Z20   = 5;
+    Z30   = 6;
 }
 
 // main wrapper for all info
