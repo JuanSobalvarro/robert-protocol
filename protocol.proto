@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package robert;
+package robert.protocol;
 
 enum CommandType {
     PING = 0;   
