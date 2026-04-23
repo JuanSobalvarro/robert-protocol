@@ -92,4 +92,4 @@ enum ResponseStatus {
 message ServerResponse {
     ResponseStatus status = 1;
     string message = 2;
-  Zone zone = 6; // only for SETZONE
+}
