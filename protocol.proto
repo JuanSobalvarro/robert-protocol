@@ -35,12 +35,6 @@ message ConfData {
     int32 cfx = 4;
 }
 
-message RobTarget {
-    Position trans = 1;
-    Orientation rot = 2;
-    ConfData robconf = 5;
-}
-
 message RobJoint {
     float rax_1 = 1;
     float rax_2 = 2;
@@ -57,6 +51,13 @@ message ExtJoint {
     float eax_d = 4;
     float eax_e = 5;
     float eax_f = 6;
+}
+
+message RobTarget {
+    Position trans = 1;
+    Orientation rot = 2;
+    ConfData robconf = 3;
+    ExtJoint extax = 4;
 }
 
 message JointTarget {
@@ -91,4 +92,4 @@ enum ResponseStatus {
 message ServerResponse {
     ResponseStatus status = 1;
     string message = 2;
-}
+  Zone zone = 6; // only for SETZONE
