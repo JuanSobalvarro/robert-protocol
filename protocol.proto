@@ -102,7 +102,7 @@ message RobotStatus {
     OpMode op_mode = 1;
     float speed_override = 2;
     float current_speed = 3;
-    float current_zone = 4;
+    Zone current_zone = 4;
     RobTarget current_target = 5;
     JointTarget current_joint_target = 6;
     string robot_time = 7;
