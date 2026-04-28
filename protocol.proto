@@ -13,6 +13,7 @@ enum CommandType {
     MOVEABSJ = 7;
     SETSPEED = 8;
     SETZONE = 9;
+    GETSTATUS = 10;
 }
 
 message Position {
@@ -75,6 +76,24 @@ enum Zone {
     Z30   = 6;
 }
 
+enum OpMode {
+    OP_UNDEF = 0;
+    OP_AUTO = 1;
+    OP_MAN_PROG = 2;
+    OP_MAN_TEST = 3;
+}
+
+enum DigitalIOState {
+    LOW = 0;
+    HIGH = 1;
+    EDGE = 2;
+}
+
+message DigitalIO {
+    string name = 1;
+    bool state = 2;
+}
+
 // main wrapper for all info
 message ClientRequest {
     CommandType command = 1; // always required
@@ -90,7 +109,19 @@ enum ResponseStatus {
     ERROR = 1;
 }
 
+message RobotStatus {
+    OpMode op_mode = 1;
+    float speed_override = 2;
+    float current_speed = 3;
+    float current_zone = 4;
+    RobTarget current_target = 5;
+    JointTarget current_joint_target = 6;
+    string robot_time = 9;
+    string robot_date = 10;
+}
+
 message ServerResponse {
     ResponseStatus status = 1;
     string message = 2;
+    RobotStatus robot_status = 3; // only for GETSTATUS
 }
