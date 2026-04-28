@@ -83,17 +83,6 @@ enum OpMode {
     OP_MAN_TEST = 3;
 }
 
-enum DigitalIOState {
-    LOW = 0;
-    HIGH = 1;
-    EDGE = 2;
-}
-
-message DigitalIO {
-    string name = 1;
-    bool state = 2;
-}
-
 // main wrapper for all info
 message ClientRequest {
     CommandType command = 1; // always required
