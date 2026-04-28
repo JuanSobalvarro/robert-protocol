@@ -116,8 +116,8 @@ message RobotStatus {
     float current_zone = 4;
     RobTarget current_target = 5;
     JointTarget current_joint_target = 6;
-    string robot_time = 9;
-    string robot_date = 10;
+    string robot_time = 7;
+    string robot_date = 8;
 }
 
 message ServerResponse {
