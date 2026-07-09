@@ -3,7 +3,7 @@ syntax = "proto3";
 package robert.protocol;
 
 enum CommandType {
-    PING = 0;   
+    PING = 0;
     PINGR = 1;
     ZERO = 2;
     EXIT = 3;
@@ -14,6 +14,7 @@ enum CommandType {
     SETSPEED = 8;
     SETZONE = 9;
     GETSTATUS = 10;
+    CHECKTASK = 11;
 }
 
 message Position {
@@ -89,8 +90,9 @@ message ClientRequest {
     RobTarget target = 2; // only for MOVEL, MOVEJ
     RobTarget extra_target = 3; // only for MOVEC
     JointTarget joint_target = 4; // only for MoveAbsJ
-    float speed = 5; // only for SETSPEED
-    Zone zone = 6; // only for SETZONE
+    uint64 task_id = 5; // only for CHECKTASK
+    float speed = 6; // only for SETSPEED
+    Zone zone = 7; // only for SETZONE
 }
 
 enum ResponseStatus {
