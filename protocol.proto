@@ -114,5 +114,6 @@ message RobotStatus {
 message ServerResponse {
     ResponseStatus status = 1;
     string message = 2;
-    RobotStatus robot_status = 3; // only for GETSTATUS
+    uint64 task_id = 3; // if the response is related to robotic operations, we return a tracking task id
+    RobotStatus robot_status = 4; // only for GETSTATUS
 }
