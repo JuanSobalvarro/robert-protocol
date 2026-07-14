@@ -111,9 +111,22 @@ message RobotStatus {
     string robot_date = 8;
 }
 
+enum TaskStatus {
+    TASK_UNKNOWN = 0;
+    TASK_PENDING = 1;
+    TASK_IN_PROGRESS = 2;
+    TASK_COMPLETED = 3;
+    TASK_FAILED = 4;
+}
+
 message ServerResponse {
     ResponseStatus status = 1;
-    string message = 2;
+    string error_message = 2;
     uint64 task_id = 3; // if the response is related to robotic operations, we return a tracking task id
-    RobotStatus robot_status = 4; // only for GETSTATUS
+    TaskStatus task_status = 4;
+
+    oneof payload {
+        string text_payload = 5;
+        RobotStatus robot_status = 6; // only for GETSTATUS
+    }
 }
