@@ -15,6 +15,12 @@ enum CommandType {
     SETZONE = 9;
     GETSTATUS = 10;
     CHECKTASK = 11;
+
+    LOGIN = 12;
+    LOGOUT = 13;
+
+    ACQUIRE = 14; // request exclusive control
+    RELEASE = 15; // release control
 }
 
 message Position {
@@ -93,6 +99,9 @@ message ClientRequest {
     uint64 task_id = 5; // only for CHECKTASK
     float speed = 6; // only for SETSPEED
     Zone zone = 7; // only for SETZONE
+    string session_token = 8; // only for LOGIN, LOGOUT, ACQUIRE, RELEASE
+    string username = 9; // only for LOGIN
+    string password = 10; // only for LOGIN
 }
 
 enum ResponseStatus {
