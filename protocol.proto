@@ -21,6 +21,9 @@ enum CommandType {
 
     ACQUIRE = 14; // request exclusive control
     RELEASE = 15; // release control
+
+    MOVEL_OFFS = 16; // move linear using offset
+    MOVEJ_OFFS = 17; // move joint using offset
 }
 
 message Position {
